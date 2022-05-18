@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Set the keyboard layout
+setxkbmap -layout gb &
+
+# This line of code generates a random number
+# for use with feh
+num1=$(( RANDOM % 310 ))
+
+# Set the wallpaper
+feh --bg-fill /usr/share/backgrounds/wallpapers/background$num1.jpg &
+
+# Enable numlock
+numlockx on &
+
+# Enable a single instance of picom/compton
+killall picom
+picom -f &
+
+# Enable polybar 
+# TODO:
+# PACKAGE POLYBAR FOR DEBIAN
+killall polybar
+polybar -c $HOME/.config/polybar/config.ini mainbar-i3
