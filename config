@@ -1,154 +1,24 @@
-# █████████████████████████████████████████████████████████████████████████▀█
-# █▄─▀─▄█─▄─▄─█─▄▄▄─█░█─▄▄▄▄███▄─▄█▄▄▄░███─▄▄▄─█─▄▄─█▄─▀█▄─▄█▄─▄▄─█▄─▄█─▄▄▄▄█
-# ██▀─▀████─███─███▀█▄█▄▄▄▄─████─███▄▄░███─███▀█─██─██─█▄▀─███─▄████─██─██▄─█
-# ▀▄▄█▄▄▀▀▄▄▄▀▀▄▄▄▄▄▀▀▀▄▄▄▄▄▀▀▀▄▄▄▀▄▄▄▄▀▀▀▄▄▄▄▄▀▄▄▄▄▀▄▄▄▀▀▄▄▀▄▄▄▀▀▀▄▄▄▀▄▄▄▄▄▀
-#
-# Version: 2.0
-# Github: https://github.com/ajaysfuckery/dots
+# ┏━┓┏━┳━━━━┳━━━┓╋╋╋╋╋┏━━━┓╋╋╋╋╋╋╋╋╋┏━┓
+# ┗┓┗┛┏┫┏┓┏┓┃┏━┓┣┓╋╋╋╋┃┏━┓┃╋╋╋╋╋╋╋╋╋┃┏┛
+# ╋┗┓┏┛┗┛┃┃┗┫┃╋┗┫┣━━┓┏╋┛┏┛┃┏━━┳━━┳━┳┛┗┳┳━━┓		Version; 3.0
+# ╋┏┛┗┓╋╋┃┃╋┃┃╋┏╋┫━━┫┣╋┓┗┓┃┃┏━┫┏┓┃┏╋┓┏╋┫┏┓┃		Github: https://github.com/ajaysfuckery
+# ┏┛┏┓┗┓╋┃┃╋┃┗━┛┃┣━━┃┃┃┗━┛┃┃┗━┫┗┛┃┃┃┃┃┃┃┗┛┃
+# ┗━┛┗━┛╋┗┛╋┗━━━┛┗━━┛┗┻━━━┛┗━━┻━━┻┛┗┻┛┗┻━┓┃
+# ╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋┏━┛┃
+# ╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋┗━━┛
 
-###########################
-#### List the mod keys ####
-###########################
-
-# Mod1 -> ALT
-# Mod2 -> NUMLOCK
-# Mod3 ->
-# Mod4 -> WINDOWS KEY
+# Set the mod keys #
 
 set $mod4 Mod4
 set $mod1 Mod1
 
+# Set n,s,e,w
+set $n Up
+set $s Down
+set $e Right
+set $w Left
 
-####################################
-#### Launch i3-autostart script ####
-####################################
-
-exec_always --no-startup-id i3-autostart.sh
-
-
-############################
-#### Set the font of WM ####
-############################
-
-font pango:DejaVu Sans Mono 10
-#font pango:monospace 10
-
-############################################
-#### Autostart .desktop files using dex ####
-############################################
-
-exec --no-startup-id dex --autostart --environment i3
-
-
-#########################
-#### Start nm-applet ####
-#########################
-
-exec --no-startup-id nm-applet
-
-
-########################
-#### Audio Settings ####
-########################
-
-# -> Increase
-# -> Decrease
-# -> Mute audio
-# -> Mute Mic
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-
-#############################################
-#### Drag floating windows (Mouse + Mod) ####
-#############################################
-
-floating_modifier $mod4
-
-
-#################################
-#### Application Keybindings ####
-#################################
-
-bindsym $mod4+Return exec --no-startup-id xfce4-terminal
-bindsym $mod4+Shift+w exec --no-startup-id firefox
-bindsym $mod4+Shift+d exec --no-startup-id dmenu_run
-bindsym $mod4+Shift+s exec --no-startup-id spotify
-bindsym $mod4+o exec --no-startup-id onlyoffice-desktopeditors
-bindsym $mod4+l exec --no-startup-id libreoffice
-bindsym $mod4+Shift+Return exec --nostartup-id thunar
-bindsym $mod1+p exec --no-startup-id gnome-screenshot
-bindsym $mod4+Shift+v exec --no-startup-id virtualbox
-
-
-#############################
-#### Kill focused window ####
-#############################
-
-bindsym $mod4+q kill
-
-
-#######################################
-#### Shift focus to another window ####
-#######################################
-
-bindsym $mod4+Shift+Left move left
-bindsym $mod4+Shift+Right move right
-bindsym $mod4+Shift+Up move up
-bindsym $mod4+Shift+Down move down
-
-
-#######################
-#### Split windows ####
-#######################
-
-bindsym $mod4+h split h
-bindsym $mod4+v split v
-
-
-####################
-#### Fullscreen ####
-####################
-
-bindsym $mod4+f fullscreen toggle
-
-
-#################################
-#### Change container layout ####
-#################################
-
-bindsym $mod4+s layout stacking
-bindsym $mod4+w layout tabbed
-bindsym $mod4+e layout toggle split
-
-
-##########################
-#### Tiling/Floating? ####
-##########################
-
-bindsym $mod4+Shift+space floating toggle
-
-
-######################################################
-#### Change focus between tiling/floating windows ####
-######################################################
-
-bindsym $mod4+space focus mode_toggle
-
-
-################################
-#### Focus parent container ####
-################################
-
-bindsym $mod4+a focus parent
-
-
-#########################
-#### Workspace names ####
-#########################
+# name workspaces
 
 set $w1 "1"
 set $w2 "2"
@@ -161,10 +31,7 @@ set $w8 "8"
 set $w9 "9"
 set $w10 "10"
 
-
-##########################
-#### Switch workspace ####
-##########################
+# Move to another workspace
 
 bindsym $mod4+1 workspace number $w1
 bindsym $mod4+2 workspace number $w2
@@ -177,10 +44,7 @@ bindsym $mod4+8 workspace number $w8
 bindsym $mod4+9 workspace number $w9
 bindsym $mod4+0 workspace number $w10
 
-
-##################################################
-#### Move focused window to another workspace ####
-##################################################
+# Move focused window to another workspace
 
 bindsym $mod4+Shift+1 move container to workspace number $w1
 bindsym $mod4+Shift+2 move container to workspace number $w2
@@ -193,66 +57,83 @@ bindsym $mod4+Shift+8 move container to workspace number $w8
 bindsym $mod4+Shift+9 move container to workspace number $w9
 bindsym $mod4+Shift+0 move container to workspace number $w10
 
+# Application Keybindings
 
-############################
-#### Reload this config ####
-############################
+bindsym $mod4+Return exec --no-startup-id xfce4-terminal
+bindsym $mod4+Shift+w exec --no-startup-id firefox
+bindsym $mod4+Shift+d exec --no-startup-id rofi -modi drun -show drun -line-padding 4 -columns 2 -padding 50 -hide-scrollbar -terminal xfce4-terminal -show-icons -drun-icon-theme "Sardi Flat Evopop" -font "Noto Sans Regular 15"
+bindsym $mod4+Shift+s exec --no-startup-id spotify
+bindsym $mod4+o exec --no-startup-id onlyoffice-desktopeditors
+bindsym $mod4+l exec --no-startup-id libreoffice
+bindsym $mod4+Shift+Return exec --nostartup-id thunar
+bindsym $mod1+p exec --no-startup-id gnome-screenshot
+bindsym $mod4+Shift+v exec --no-startup-id virtualbox
 
-bindsym $mod4+Shift+c reload
+# Archlinux Logout
+bindsym $mod4+x exec --no-startup-id archlinux-logout
+
+# Reload i3 configuration
 bindsym $mod4+Shift+r restart
+bindsym $mod4+Shift+c reload
 
+# Kill a focused window
+bindsym $mod4+q kill
 
-#########################
-#### Logout of i3 WM ####
-#########################
+# Drag floating windows (Mouse + Mod4)
+floating_modifier $mod4
 
+# Toggle between floating and tiling mode
+bindsym $mod4+Shift+space floating toggle
+
+# change focused window
+bindsym $mod4+$w focus left
+bindsym $mod4+$e focus right
+bindsym $mod4+$n focus up
+bindsym $mod4+$s focus down
+
+# move focused window
+bindsym $mod4+Shift+$w move left
+bindsym $mod4+Shift+$e move right
+bindsym $mod4+Shift+$n move up
+bindsym $mod4+Shift+$s move down
+
+# orientation for new workspaces
+default_orientation horizontal
+
+# split horizontal
+bindsym $mod4+h split h
+
+# split vertical
+bindsym $mod4+v split v
+
+# change container layout
+bindsym $mod4+s layout stacking
+bindsym $mod4+t layout tabbed
+bindsym $mod4+e toggle split
+
+# fullscreen toggle (click keys 2 times to exit fullscreen)
+bindsym $mod4+f fullscreen toggle
+
+# focus window between tiling and floating
+bindsym $mod4+space focus mode_toggle
+
+# media keys 
 #
-# TODO:
-#		[*] Code a program to exit WM's
+# Incease
+# Decrease
+# Mute 
+# Mute Mic
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Brightness settings
 #
+# Increase
+# Decrease
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20
 
-exec --no-startup-id /usr/local/bin/xtcs-logout.sh
-
-########################
-#### Resize windows ####
-########################
-
-mode "resize" {
-
-    # These keybindings trigger when you enter resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
-
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
-    bindsym Up risize shrink height 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod4+r mode "default"
-}
-
-bindsym $mod4+r mode "resize"
-
-
-######################################################
-#### Remember workspaces for certain applications ####
-######################################################
-
-assign [class="Xfce4-terminal"] $w1
-assign [class="Firefox-esr"] $w2
-assign [class="libreoffice-startcenter"] $w3
-assign [class="DesktopEditors"] $w3
-
-
-#######################
-#### i3 status bar ####
-#######################
-
-#bar {
-#	status_command i3status
-#}
+# END OF FILE
+# ~XTC
